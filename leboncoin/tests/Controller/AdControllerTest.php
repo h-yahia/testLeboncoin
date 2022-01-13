@@ -101,4 +101,14 @@ class AdControllerTest extends WebTestCase
         $this->assertEquals($title, $data['title']);
     }
 
+    public function testSuccessDeleteAd(): void
+    {
+        $client = static::createClient();
+        $client->request(
+            'DELETE',
+            '/api/ad/1'
+        );
+        $this->assertResponseIsSuccessful();
+    }
+
 }

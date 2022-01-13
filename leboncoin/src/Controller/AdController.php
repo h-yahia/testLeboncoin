@@ -46,4 +46,15 @@ class AdController extends AbstractController
             ), 400);
         }
     }
+
+    public function deleteAd($id, AdService $adService): JsonResponse {
+        try {
+            return new JsonResponse($adService->deleteAd($id));
+        } catch (\Exception $e) {
+            return new JsonResponse(array(
+                'errors' => $e->getMessage(),
+                'status' => 400
+            ), 400);
+        }
+    }
 }

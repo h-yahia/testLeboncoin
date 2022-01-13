@@ -22,7 +22,7 @@ class AdService {
     public function getAd($id): array {
         $ad = $this->adRepository->find($id);
         if(!$ad)
-            throw new \Exception('no add found with this id : '.$id);
+            throw new \Exception('no ad found with this id : '.$id);
         return $ad->serialize();
     }
 
@@ -50,7 +50,7 @@ class AdService {
     public function putAd($id, $data): array {
         $ad = $this->adRepository->find($id);
         if(!$ad)
-            throw new \Exception('no add found with this id : '.$id);
+            throw new \Exception('no ad found with this id : '.$id);
         $categoryClassName = 'App\Entity\\'.ucfirst($ad->getCategory());
         $categoryFormClassName = 'App\Form\\'.ucfirst($ad->getCategory())."Type";
         if(!class_exists($categoryClassName) || !class_exists($categoryFormClassName))
@@ -64,5 +64,14 @@ class AdService {
         } else {
             throw new \Exception('No valid');
         }
+    }
+
+    public function deleteAd($id): array {
+        $ad = $this->adRepository->find($id);
+        if(!$ad)
+            throw new \Exception('no ad found with this id : '.$id);
+        $this->em->remove($ad);
+        $this->em->flush();
+        return array('message' => 'Ad was deleted.');
     }
 }

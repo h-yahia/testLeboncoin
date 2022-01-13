@@ -11,3 +11,7 @@ api_put_ad:
   path: /api/ad/{id}
   controller: App\Controller\AdController::putAd
   methods: PUT
+api_delete_ad:
+  path: /api/ad/{id}
+  controller: App\Controller\AdController::deleteAd
+  methods: DELETE
