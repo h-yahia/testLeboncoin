@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AutomobileRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AutomobileRepository::class)
@@ -13,11 +14,13 @@ class Automobile extends Ad
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull
      */
     private $brand;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull
      */
     private $model;
 
