@@ -2,3 +2,8 @@ api_get_ad:
   path: /api/ad/{id}
   controller: App\Controller\AdController::getAd
   methods: GET
+
+api_post_ad:
+  path: /api/ad
+  controller: App\Controller\AdController::postAd
+  methods: POST
