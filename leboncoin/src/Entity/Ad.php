@@ -7,6 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=AdRepository::class)
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="category", type="string")
+ * @ORM\DiscriminatorMap({"automobile" = "Automobile", "job" = "Job", "realEstate" = "RealEstate"})
  */
 class Ad
 {
