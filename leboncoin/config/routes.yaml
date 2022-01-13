@@ -7,3 +7,7 @@ api_post_ad:
   path: /api/ad
   controller: App\Controller\AdController::postAd
   methods: POST
+api_put_ad:
+  path: /api/ad/{id}
+  controller: App\Controller\AdController::putAd
+  methods: PUT

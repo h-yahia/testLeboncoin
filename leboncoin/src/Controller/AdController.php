@@ -34,4 +34,16 @@ class AdController extends AbstractController
             ), 400);
         }
     }
+
+    public function putAd($id, Request $request, AdService $adService): JsonResponse {
+        try {
+            $data = $request->request->all();
+            return new JsonResponse($adService->putAd($id, $data));
+        } catch (\Exception $e) {
+            return new JsonResponse(array(
+                'errors' => $e->getMessage(),
+                'status' => 400
+            ), 400);
+        }
+    }
 }

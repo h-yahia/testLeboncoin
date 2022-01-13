@@ -17,7 +17,7 @@ class AdControllerTest extends WebTestCase
     public function testErrorGetAd(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/api/ad/100');
+        $crawler = $client->request('GET', '/api/ad/A');
 
         $this->assertSame(404, $client->getResponse()->getStatusCode());
     }
@@ -84,5 +84,21 @@ class AdControllerTest extends WebTestCase
         $this->assertSame(400, $client->getResponse()->getStatusCode());
     }
 
+    public function testSuccessPutAd(): void
+    {
+        $title = 'title test 1';
+        $client = static::createClient();
+        $client->request(
+            'PUT',
+            '/api/ad/1',
+            array(
+                'title' => $title,
+            )
+        );
+        $this->assertResponseIsSuccessful();
+
+        $data = json_decode($client->getResponse()->getContent(), true);
+        $this->assertEquals($title, $data['title']);
+    }
 
 }
