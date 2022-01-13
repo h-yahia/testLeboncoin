@@ -44,4 +44,11 @@ class Automobile extends Ad
 
         return $this;
     }
+
+    public function serialize(): array {
+        $res = parent::serialize();
+        $res['brand'] = $this->getBrand();
+        $res['model'] = $this->getModel();
+        return $res;
+    }
 }

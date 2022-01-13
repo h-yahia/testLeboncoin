@@ -58,4 +58,17 @@ class Ad
 
         return $this;
     }
+
+    public function getCategory() {
+        return (new \ReflectionClass($this))->getShortName();
+    }
+
+    public function serialize(): array {
+        return array(
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'content' => $this->getContent(),
+            'category' => $this->getCategory()
+        );
+    }
 }

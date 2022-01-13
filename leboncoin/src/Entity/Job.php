@@ -8,6 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
  */
-class Job extends Ad
-{
+class Job extends Ad {
+
+    public function serialize(): array {
+        return parent::serialize();
+    }
 }
