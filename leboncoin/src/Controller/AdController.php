@@ -14,7 +14,7 @@ class AdController extends AbstractController
     public function getAd($id, AdService $adService): JsonResponse {
         try {
             return new JsonResponse($adService->getAd($id));
-        } catch (\Excetion $e) {
+        } catch (\Exception $e) {
             return new JsonResponse(array(
                 'errors' => $e->getMessage(),
                 'status' => 404
