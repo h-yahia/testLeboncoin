@@ -60,7 +60,6 @@ class AdControllerTest extends WebTestCase
             array(
                 'title' => 'title test',
                 'content' => 'content test',
-                'brand' => 'brand test',
                 'model' => 'model test',
                 'category' => 'automobile'
             )
@@ -110,5 +109,4 @@ class AdControllerTest extends WebTestCase
         );
         $this->assertResponseIsSuccessful();
     }
-
 }
